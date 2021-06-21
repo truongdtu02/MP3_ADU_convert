@@ -39,7 +39,7 @@ namespace FFmpegLinux.Controllers
         public string GetDataPath(string file) => $"Data\\{file}";
 
         [HttpPost]
-        public void UploadAsync(IFormFile file)
+        public IActionResult UploadAsync(IFormFile file)
         {
             if (file != null)
             {
@@ -51,8 +51,8 @@ namespace FFmpegLinux.Controllers
                 var ffmpegxabe = new FFmpegXabe();
                 //await Task.Run(() => ffmpegxabe.convertMP3(path, file.FileName));
                 _ = ffmpegxabe.convertMP3(path, file.FileName);        
-                
             }
+            return RedirectToAction("Index");
         }
     }
 }
