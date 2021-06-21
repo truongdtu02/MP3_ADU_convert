@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,7 +14,21 @@ namespace FFmpegLinux
     {
         private static async Task Run()
         {
-            await FFmpegXabe.convertMP3("Data","test.mp3");
+            int numOfProcess = 20;
+            string fileName = "test";
+            string path1 = @"Data";
+            string path2 = @"Data2";
+            //copy file to multiple version
+            for (int i = 1; i <= numOfProcess; i++)
+            {
+                File.Copy(Path.Combine(path1, fileName + ".mp3"), Path.Combine(path1, fileName + i.ToString() + ".mp3"), true);
+            }
+            //await FFmpegXabe.convertMP3("Data","test.mp3");
+            for (int i = 1; i <= numOfProcess; i++)
+            {
+                await FFmpegXabe.convertMP3("Data", fileName + i.ToString() + ".mp3");
+                //File.Copy(Path.Combine(path1, fileName + ".mp3"), Path.Combine(path1, fileName + i.ToString() + ".mp3"), true);
+            }
             Console.In.ReadLine();
         }
         public static void Main(string[] args)
