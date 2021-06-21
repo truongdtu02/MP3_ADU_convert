@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FFmpegLinux
@@ -24,11 +25,23 @@ namespace FFmpegLinux
                 File.Copy(Path.Combine(path1, fileName + ".mp3"), Path.Combine(path1, fileName + i.ToString() + ".mp3"), true);
             }
             //await FFmpegXabe.convertMP3("Data","test.mp3");
+            //for (int i = 1; i <= numOfProcess; i++)
+            //{
+            //    await FFmpegXabe.convertMP3("Data", fileName + i.ToString() + ".mp3");
+            //    //File.Copy(Path.Combine(path1, fileName + ".mp3"), Path.Combine(path1, fileName + i.ToString() + ".mp3"), true);
+            //}
+
             for (int i = 1; i <= numOfProcess; i++)
             {
-                await FFmpegXabe.convertMP3("Data", fileName + i.ToString() + ".mp3");
+                int iTmp = i;
+                Thread t = new Thread(async() =>
+                {
+                    await FFmpegXabe.convertMP3("Data", fileName + iTmp.ToString() + ".mp3");
+                });
+                t.Start();
                 //File.Copy(Path.Combine(path1, fileName + ".mp3"), Path.Combine(path1, fileName + i.ToString() + ".mp3"), true);
             }
+
             Console.In.ReadLine();
         }
         public static void Main(string[] args)
