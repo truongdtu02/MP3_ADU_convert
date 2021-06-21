@@ -35,9 +35,9 @@ namespace FFmpegLinux
 
             for (int i = 1; i <= numOfProcess; i++)
             {
+                int iTmp = i;
                 Thread t = new Thread(async() =>
                 {
-                    int iTmp = i;
                     await FFmpegXabe.convertMP3("Data", "test" + iTmp.ToString() + ".mp3");
                 });
                 t.Start();
@@ -48,6 +48,7 @@ namespace FFmpegLinux
         }
         public static void Main(string[] args)
         {
+            Console.WriteLine("welcome to truyenthanhthongminh");
             //CreateHostBuilder(args).Build().Run();
             Run();
         }
