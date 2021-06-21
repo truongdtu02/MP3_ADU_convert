@@ -55,7 +55,7 @@ namespace FFmpegLinux
             conversion.OnProgress += async (sender, args) =>
             {
                     //Show all output from FFmpeg to console
-                    await Console.Out.WriteLineAsync($"[{args.Duration}/{args.TotalLength}][{args.Percent}%]");
+                    await Console.Out.WriteLineAsync($"[{args.Duration}/{args.TotalLength}][{args.Percent}%] {nameFile}");
             };
             //Start conversion
             await conversion.Start();
