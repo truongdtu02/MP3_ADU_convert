@@ -60,7 +60,7 @@ namespace FFmpegLinux
             //Start conversion
             await conversion.Start();
 
-            //await Console.Out.WriteLineAsync($"Finished converion file [{nameFile}]");
+            await Console.Out.WriteLineAsync($"Finished converion file [{nameFile}]");
         }
 
 
