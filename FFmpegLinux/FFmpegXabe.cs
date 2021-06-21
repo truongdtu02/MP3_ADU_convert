@@ -12,9 +12,10 @@ namespace FFmpegLinux
     public class FFmpegXabe
     {
         public static string curPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-        public async Task convertMP3(string pathFile, string nameFile)
+        public string GetDataPath(string file) => $"Data\\{file}";
+        public async Task convertMP3(string nameFile)
         {
+            string pathFile = GetDataPath(nameFile);
             string outPath = Path.ChangeExtension(pathFile, ".mp3");
 
             //string outPath = "converted"; // Your code goes here

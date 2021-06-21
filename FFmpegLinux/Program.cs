@@ -13,7 +13,11 @@ namespace FFmpegLinux
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            //CreateHostBuilder(args).Build().Run();
+
+            var ffmpegxabe = new FFmpegXabe();
+            //await Task.Run(() => ffmpegxabe.convertMP3(path, file.FileName));
+            _ = ffmpegxabe.convertMP3("test.mp3");
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

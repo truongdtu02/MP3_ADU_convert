@@ -48,9 +48,9 @@ namespace FFmpegLinux.Controllers
                 using var stream = new FileStream(path, FileMode.Create);
                 file.CopyTo(stream);
 
-                var ffmpegxabe = new FFmpegXabe();
+                //var ffmpegxabe = new FFmpegXabe();
                 //await Task.Run(() => ffmpegxabe.convertMP3(path, file.FileName));
-                _ = ffmpegxabe.convertMP3(path, file.FileName);        
+                //_ = ffmpegxabe.convertMP3(path, file.FileName);        
             }
             return RedirectToAction("Index");
         }
