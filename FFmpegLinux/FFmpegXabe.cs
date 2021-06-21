@@ -6,15 +6,19 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Xabe.FFmpeg;
+using Xabe.FFmpeg.Downloader;
 
 namespace FFmpegLinux
 {
     public class FFmpegXabe
     {
         public static string curPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        public string GetDataPath(string file) => $"Data\\{file}";
-        public async Task convertMP3(string nameFile)
+        public static string GetDataPath(string file) => $"Data\\{file}";
+        public static async Task convertMP3(string nameFile)
         {
+            //Get latest version of FFmpeg. It's great idea if you don't know if you had installed FFmpeg.
+            await FFmpegDownloader.GetLatestVersion(FFmpegVersion.Official);
+
             string pathFile = GetDataPath(nameFile);
             string outPath = Path.ChangeExtension(pathFile, ".mp3");
 
