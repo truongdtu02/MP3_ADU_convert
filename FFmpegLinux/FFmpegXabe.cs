@@ -13,7 +13,7 @@ namespace FFmpegLinux
     public class FFmpegXabe
     {
         public static string curPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        public static string GetDataPath(string file) => $"Data\\{file}";
+        public static string GetDataPath(string file) => Path.Combine(@"Data", file);
         public static async Task convertMP3(string nameFile)
         {
             //Get latest version of FFmpeg. It's great idea if you don't know if you had installed FFmpeg.
