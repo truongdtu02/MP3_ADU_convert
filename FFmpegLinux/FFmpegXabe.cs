@@ -48,7 +48,7 @@ namespace FFmpegLinux
                 //SetOverwriteOutput to overwrite files. It's useful when we already run application before
                 .SetOverwriteOutput(true)
                 //Disable multithreading
-                .UseMultiThread(false)
+                .UseMultiThread(true)
                 //Set conversion preset. You have to chose between file size and quality of video and duration of conversion
                 .SetPreset(ConversionPreset.UltraFast);
             //Add log to OnProgress
