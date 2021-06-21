@@ -13,7 +13,7 @@ namespace FFmpegLinux
 {
     public class Program
     {
-        private static async Task Run()
+        private static void Run()
         {
             int numOfProcess = 20;
             string fileName = "test";
@@ -49,7 +49,7 @@ namespace FFmpegLinux
         public static void Main(string[] args)
         {
             //CreateHostBuilder(args).Build().Run();
-            Run().GetAwaiter().GetResult();
+            Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
