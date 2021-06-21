@@ -13,14 +13,14 @@ namespace FFmpegLinux
     public class FFmpegXabe
     {
         public static string curPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        public static string GetDataPath(string file) => Path.Combine(@"Data2", file);
-        public static async Task convertMP3(string nameFile)
+        public static async Task convertMP3(string pathFile, string nameFile)
         {
             //Get latest version of FFmpeg. It's great idea if you don't know if you had installed FFmpeg.
             await FFmpegDownloader.GetLatestVersion(FFmpegVersion.Official);
 
-            string pathFile = GetDataPath(nameFile);
-            string outPath = Path.ChangeExtension(pathFile, ".mp3");
+            pathFile = Path.Combine(pathFile, nameFile);
+            string outPath = Path.Combine(@"Data2", nameFile);
+            outPath = Path.ChangeExtension(outPath, ".mp3");
 
             //string outPath = "converted"; // Your code goes here
             //outPath = Path.Combine(curPath, outPath, nameFile);
