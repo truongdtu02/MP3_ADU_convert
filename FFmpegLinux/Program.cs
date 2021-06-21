@@ -18,8 +18,8 @@ namespace FFmpegLinux
         }
         public static void Main(string[] args)
         {
-            //CreateHostBuilder(args).Build().Run();
-            Run().GetAwaiter().GetResult();
+            CreateHostBuilder(args).Build().Run();
+            //Run().GetAwaiter().GetResult();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
