@@ -31,6 +31,8 @@ namespace FFmpegLinux
             //    //File.Copy(Path.Combine(path1, fileName + ".mp3"), Path.Combine(path1, fileName + i.ToString() + ".mp3"), true);
             //}
 
+            await FFmpegXabe.convertMP3("Data", "test" + ".mp3");
+
             for (int i = 1; i <= numOfProcess; i++)
             {
                 int iTmp = i;
