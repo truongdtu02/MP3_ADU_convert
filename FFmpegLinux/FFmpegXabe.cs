@@ -52,15 +52,19 @@ namespace FFmpegLinux
                 //Set conversion preset. You have to chose between file size and quality of video and duration of conversion
                 .SetPreset(ConversionPreset.UltraFast);
             //Add log to OnProgress
-            conversion.OnProgress += async (sender, args) =>
+            //conversion.OnProgress += async (sender, args) =>
+            //{
+            //        //Show all output from FFmpeg to console
+            //        await Console.Out.WriteLineAsync($"[{args.Duration}/{args.TotalLength}][{args.Percent}%] {nameFile}");
+            //};
+            conversion.OnDataReceived += (sender, args) =>
             {
-                    //Show all output from FFmpeg to console
-                    await Console.Out.WriteLineAsync($"[{args.Duration}/{args.TotalLength}][{args.Percent}%] {nameFile}");
+                Console.WriteLine($"Finished converion file [{nameFile}]");
             };
             //Start conversion
             await conversion.Start();
 
-            await Console.Out.WriteLineAsync($"Finished converion file [{nameFile}]");
+            //await Console.Out.WriteLineAsync($"Finished converion file [{nameFile}]");
         }
 
 
