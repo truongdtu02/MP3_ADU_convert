@@ -26,33 +26,33 @@ namespace FFmpegLinux
             }
             //var ffmpegxabe = new FFmpegXabe();
             //await ffmpegxabe.convertMP3("Data", "test" + ".mp3");
-            for (int i = 1; i <= numOfProcess; i++)
-            {
-                await FFmpegXabe.convertMP3("Data", fileName + i.ToString() + ".mp3");
-                //File.Copy(Path.Combine(path1, fileName + ".mp3"), Path.Combine(path1, fileName + i.ToString() + ".mp3"), true);
-            }
-
-            //await FFmpegXabe.convertMP3("Data", "test" + ".mp3");
-
             //for (int i = 1; i <= numOfProcess; i++)
             //{
-            //    int iTmp = i;
-            //    Thread t = new Thread(async() =>
-            //    {
-            //        var ffmpegxabe = new FFmpegXabe();
-            //        await ffmpegxabe.convertMP3("Data", "test" + iTmp.ToString() + ".mp3");
-            //    });
-            //    t.Start();
+            //    await FFmpegXabe.convertMP3("Data", fileName + i.ToString() + ".mp3");
             //    //File.Copy(Path.Combine(path1, fileName + ".mp3"), Path.Combine(path1, fileName + i.ToString() + ".mp3"), true);
             //}
 
+            //await FFmpegXabe.convertMP3("Data", "test" + ".mp3");
+
+            for (int i = 1; i <= numOfProcess; i++)
+            {
+                string iTmp = i.ToString();
+                Thread t = new Thread(async () =>
+                {
+                    var ffmpegxabe = new FFmpegXabe();
+                    await ffmpegxabe.convertMP3("Data", "test" + iTmp + ".mp3");
+                });
+                t.Start();
+                //File.Copy(Path.Combine(path1, fileName + ".mp3"), Path.Combine(path1, fileName + i.ToString() + ".mp3"), true);
+            }
+
             Console.In.ReadLine();
         }
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             Console.WriteLine("welcome to truyenthanhthongminh");
             //CreateHostBuilder(args).Build().Run();
-            Run();
+            await Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
