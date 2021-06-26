@@ -59,7 +59,7 @@ namespace FFmpegLinux
             //};
             conversion.OnDataReceived += (sender, args) =>
             {
-                Console.WriteLine($"Finished converion file [{nameFile}]");
+                Console.WriteLine($"{args.Data}{Environment.NewLine}");
             };
             //Start conversion
             await conversion.Start();
