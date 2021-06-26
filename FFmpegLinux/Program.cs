@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Xabe.FFmpeg.Downloader;
 
 namespace FFmpegLinux
 {
@@ -33,6 +34,7 @@ namespace FFmpegLinux
             //}
 
             //await FFmpegXabe.convertMP3("Data", "test" + ".mp3");
+            await FFmpegDownloader.GetLatestVersion(FFmpegVersion.Official);
 
             for (int i = 1; i <= numOfProcess; i++)
             {

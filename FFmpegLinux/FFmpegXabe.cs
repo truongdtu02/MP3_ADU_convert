@@ -16,7 +16,7 @@ namespace FFmpegLinux
         public async Task convertMP3(string pathFile, string nameFile)
         {
             //Get latest version of FFmpeg. It's great idea if you don't know if you had installed FFmpeg.
-            await FFmpegDownloader.GetLatestVersion(FFmpegVersion.Official);
+            //await FFmpegDownloader.GetLatestVersion(FFmpegVersion.Official);
 
             pathFile = Path.Combine(pathFile, nameFile);
             string outPath = Path.Combine(@"Data2", nameFile);
