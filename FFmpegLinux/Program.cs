@@ -15,7 +15,7 @@ namespace FFmpegLinux
     {
         private static async Task Run()
         {
-            int numOfProcess = 20;
+            int numOfProcess = 10;
             string fileName = "test";
             string path1 = @"Data";
             string path2 = @"Data2";
